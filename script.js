@@ -37,10 +37,14 @@ async function fetchDataMovie(url){
 
 // fetch data dan tampilkan hasil berdasarkan url
 async function fetchShowResults(url){
-    results.innerHTML = "<p>Tunggu sebentar...<p>";
+    if(page == 1){
+        results.innerHTML = "<p>Tunggu sebentar, sedang memuat data film...<p>";
+    }
     const dataMovie = await fetchDataMovie(url); // dataMovie adalah sebuah object yang berisi informasi mengenai film yang ditemukan
-    if(dataMovie.results){
-        results.innerHTML = "";
+    if(dataMovie.results && page == 1){
+        results.innerHTML = "";    
+        showResults(dataMovie.results); // data yang dibutuhkan berupa array (20) mengenai detail / informasi film
+    }else if(dataMovie.results){
         showResults(dataMovie.results); // data yang dibutuhkan berupa array (20) mengenai detail / informasi film
     }
 }
@@ -114,8 +118,8 @@ async function showResults(dataMovie){
         const cardTemplate = await createMovieCard(movie);
         return cardTemplate;
       });
-    
-      const newContent = await Promise.all(result); // tunggu semua hasil promises movie baru nanti diproses
+      const newContent = await Promise.all(result); // tunggu semua hasil promises 
+      // movie baru nanti diproses
       results.innerHTML += newContent.join("") || "<p>Tidak ada hasil yang ditemukan.</p>"; // menambahkan daftar film ke halaman 
 }
 
