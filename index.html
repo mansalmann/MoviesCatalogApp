@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies App by Salman</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/c78150c242.js" crossorigin="anonymous"></script>
+    <script>window.addEventListener('beforeunload', (e) => {e.preventDefault(); e.returnValue = ''})</script>
+    
+</head>
+<body>
+    <header class="navbar">
+        <div class="search-box">
+            <a href="">
+                <h1>Movie App by Salman</h1>
+            </a>
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Cari Film...">
+                <button id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+        </div>
+    </header>
+    <div class="container">
+        <div id="results"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
